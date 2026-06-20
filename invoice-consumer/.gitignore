@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Windows WSL2 Metadata Zone Identifiers
+*:Zone.Identifier
+*.Zone.Identifier
