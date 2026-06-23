@@ -11,7 +11,7 @@
 ### 👤 Apresentação
 *   📄 **[Clique aqui para baixar meu Currículo em PDF](./assets/Curriculo_Wellington-pt.pdf)**
 *   💼 **[Clique aqui para baixar meu Portfólio em PDF](./assets/Project_Invoice_Processing_Java_Spring_Boot_Kafka_OCI_Cloud.pdf)**
-*   🌐 **[Conecte-se comigo no LinkedIn](https://linkedin.com](https://linkedin.com/in/wellington-lopes-8b4bb4282)** 
+*   🌐 **[Conecte-se comigo no LinkedIn](https://linkedin.com/in/wellington-lopes-8b4bb4282)** 
 ---
 
 ## 🗺️ Topologia e Fluxo da Arquitetura
