@@ -9,7 +9,7 @@
 ---
 
 ### 👤 About Me
-*   📄 **[Click here to download my Resume in PDF](./assets/curriculo.pdf)**
+*   📄 **[Click here to download my Resume in PDF](./assets/Curriculo_Wellington-pt.pdf)**
 *   💼 **[Click here to download my Portfolio in PDF](./assets/Project_Invoice_Processing_Java_Spring_Boot_Kafka_OCI_Cloud.pdf)**
 *   🌐 **[Connect with me on LinkedIn](https://linkedin.com/in/wellington-lopes-8b4bb4282)** 
 ---
