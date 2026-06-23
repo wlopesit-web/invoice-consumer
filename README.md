@@ -11,8 +11,7 @@
 ### 👤 About Me
 *   📄 **[Click here to download my Resume in PDF](./assets/curriculo.pdf)**
 *   💼 **[Click here to download my Portfolio in PDF](./assets/portfolio-carlos-engenheiro-software.pdf)**
-*   🌐 **[Connect with me on LinkedIn](https://linkedin.com/in/wellington-lopes-8b4bb4282) (Opens in new tab)** 
-*   🌐 **<a href="https://linkedin.com/in/wellington-lopes-8b4bb4282" target="_blank">Connect with me on LinkedIn</a>**
+*   🌐 **[Connect with me on LinkedIn](https://linkedin.com/in/wellington-lopes-8b4bb4282)** 
 ---
 
 ## 🗺️ Topology and Architecture Flow
