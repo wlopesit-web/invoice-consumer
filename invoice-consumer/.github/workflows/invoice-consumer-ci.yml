@@ -1,0 +1,27 @@
+name: "Invoice Consumer - [CI] Testes"
+
+on:
+  push:
+    branches-ignore: [ "main" ] # Evita rodar CI duplo na main, pois o CD já validará
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # 🔬 Executa apenas testes e validação do código
+      - name: Execute Maven Tests Shell Script
+        run: |
+          chmod +x ./scripts/ci-test.sh
+          ./scripts/ci-test.sh

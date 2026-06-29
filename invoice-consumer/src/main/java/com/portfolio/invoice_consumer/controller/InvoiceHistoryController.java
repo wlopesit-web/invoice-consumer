@@ -33,7 +33,6 @@ public class InvoiceHistoryController {
         }
     }
 
-
     @DeleteMapping("/delete/{numeroNota}")
     public ResponseEntity<?> deleteInvoice(@PathVariable String numeroNota) {
         log.warn("Solicitacao de exclusao recebida para a nota nº: {}", numeroNota);
