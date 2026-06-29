@@ -25,10 +25,10 @@ echo "🚀 Executing remote deployment for version: $IMAGE_TAG"
 ssh -i "$SSH_KEY_FILE" -o StrictHostKeyChecking=no -o IdentitiesOnly=yes opc@$ORACLE_CLOUD_IP << EOF
   echo "Connected successfully to Oracle Cloud as OPC user!"
   echo "Changing container image..."
-  kubectl set image deployment/invoice-consumer-deployment invoice-consumer-container=$FULL_IMAGE -n production
+  sudo k3s kubectl set image deployment/invoice-consumer-deployment invoice-consumer-container=$FULL_IMAGE -n production
 
   echo "Monitoring deployment rollout status..."
-  kubectl rollout status deployment/invoice-consumer-deployment -n production
+  sudo k3s kubectl rollout status deployment/invoice-consumer-deployment -n production
 EOF
 
 echo "=== ✅ DEPLOY COMMAND EXECUTION COMPLETED ==="
