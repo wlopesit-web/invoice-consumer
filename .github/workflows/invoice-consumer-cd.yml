@@ -33,13 +33,12 @@ jobs:
           chmod +x ./scripts/cd-build.sh
           ./scripts/cd-build.sh
       # ☸️ CD FASE 2: Atualiza o ambiente no Kubernetes
-      - name: Setup SSH Key Agent
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Execute Kubernetes Remote Deployment Shell Script
         env:
           ORACLE_CLOUD_IP: ${{ secrets.ORACLE_CLOUD_IP }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
           chmod +x ./scripts/deploy-k8s.sh
           ./scripts/deploy-k8s.sh
+
