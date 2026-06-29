@@ -12,10 +12,18 @@ fi
 # 2. Monta o caminho completo da nova imagem
 FULL_IMAGE="wclcorp/invoice-consumer:${IMAGE_TAG}"
 
+# Cria o arquivo temporário tratando as quebras de linha da variável do GitHub
+SSH_KEY_FILE=$(mktemp)
+printf "%s\n" "$SSH_PRIVATE_KEY" > "$SSH_KEY_FILE"
+chmod 600 "$SSH_KEY_FILE"
+
+trap 'rm -f "$SSH_KEY_FILE"' EXIT
+
 echo "🚀 Executing remote deployment for version: $IMAGE_TAG"
 
 # 3. Atualiza a imagem e monitora o status do deploy dentro do mesmo bloco SSH
-ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes opc@$ORACLE_CLOUD_IP << EOF
+ssh -i "$SSH_KEY_FILE" -o StrictHostKeyChecking=no -o IdentitiesOnly=yes opc@$ORACLE_CLOUD_IP << EOF
+  echo "Connected successfully to Oracle Cloud as OPC user!"
   echo "Changing container image..."
   kubectl set image deployment/invoice-consumer-deployment invoice-consumer-container=$FULL_IMAGE -n production
 
