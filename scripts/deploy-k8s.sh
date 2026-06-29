@@ -15,7 +15,7 @@ FULL_IMAGE="wclcorp/invoice-consumer:${IMAGE_TAG}"
 echo "🚀 Executing remote deployment for version: $IMAGE_TAG"
 
 # 3. Atualiza a imagem e monitora o status do deploy dentro do mesmo bloco SSH
-ssh -o StrictHostKeyChecking=no ubuntu@$ORACLE_CLOUD_IP << EOF
+ssh -o StrictHostKeyChecking=no IdentitiesOnly=yes ubuntu@$ORACLE_CLOUD_IP << EOF
   echo "Changing container image..."
   kubectl set image deployment/invoice-consumer-deployment invoice-consumer-container=$FULL_IMAGE -n production
 
