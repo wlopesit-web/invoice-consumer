@@ -1,8 +1,9 @@
 name: "Invoice Consumer - [CD] Pipeline"
 
 on:
-  push:
-    branches: [ "main" ]
+  #push:
+  #  branches: [ "main" ]
+ workflow_dispatch:
 
 jobs:
   continuous-deployment:
@@ -45,7 +46,7 @@ jobs:
           script_stop: true
           script: |
             # 1. Navega até a pasta onde o projeto está clonado na sua VM
-            cd /home/opc/projetos/invoice-consumer/invoice-consumer
+            cd /home/opc/projetos/invoice-consumer
             
             # 2. Garante permissão e roda o script que veio no Git
             chmod +x ./scripts/deploy-docker.sh
