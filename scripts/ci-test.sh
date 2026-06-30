@@ -9,11 +9,11 @@ NC='\033[0m' # Sem Cor
 echo -e "${YELLOW}=== 🔍 VALIDATING INITIAL CONFIGURATIONS ===${NC}"
 
 # 1. Validação da variável do Docker Username
-if [ -z "$DOCKER_USERNAME" ]; then
-     echo -e "${RED}❌ ERROR: The \$DOCKER_USERNAME variable is empty or not defined!${NC}"
-     echo -e "${YELLOW}👉 To run locally, execute first: export DOCKER_USERNAME='your_username'${NC}"
-     exit 1
-fi
+#if [ -z "$DOCKER_USERNAME" ]; then
+#     echo -e "${RED}❌ ERROR: The \$DOCKER_USERNAME variable is empty or not defined!${NC}"
+#     echo -e "${YELLOW}👉 To run locally, execute first: export DOCKER_USERNAME='your_username'${NC}"
+#     exit 1
+#fi
 
 echo -e "${YELLOW}=== 🚀 STEP 1: INITIALIZING MAVEN TESTS ===${NC}"
 
