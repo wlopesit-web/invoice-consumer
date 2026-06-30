@@ -32,13 +32,32 @@ jobs:
         run: |
           chmod +x ./scripts/cd-build.sh
           ./scripts/cd-build.sh
-      # ☸️ CD FASE 2: Atualiza o ambiente no Kubernetes
-      - name: Execute Kubernetes Remote Deployment Shell Script
+      # ?? CD FASE 2: Conecta via SSH e apenas executa o script que já existe na VM
+      - name: Execute OCI VM Remote Deployment
+        uses: appleboy/ssh-action@v1.0.3
         env:
-          ORACLE_CLOUD_IP: ${{ secrets.ORACLE_CLOUD_IP }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           IMAGE_TAG: ${{ github.sha }}
-        run: |
-          chmod +x ./scripts/deploy-k8s.sh
-          ./scripts/deploy-k8s.sh
+        with:
+          host: ${{ secrets.ORACLE_CLOUD_IP }}
+          username: opc # Usuário padrão da VM Oracle Linux
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: IMAGE_TAG
+          script_stop: true
+          script: |
+            # 1. Navega até a pasta onde o projeto está clonado na sua VM
+            cd /home/opc/projetos/invoice-consumer/invoice-consumer
+            
+            # 2. Garante permissão e roda o script que veio no Git
+            chmod +x ./scripts/deploy-docker.sh
+            export IMAGE_TAG=$IMAGE_TAG
+            ./scripts/deploy-docker.sh
+      # ☸️ CD FASE 2: Atualiza o ambiente no Kubernetes
+      #- name: Execute Kubernetes Remote Deployment Shell Script
+      #  env:
+      #    ORACLE_CLOUD_IP: ${{ secrets.ORACLE_CLOUD_IP }}
+      #    SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      #    IMAGE_TAG: ${{ github.sha }}
+      #  run: |
+      #    chmod +x ./scripts/deploy-k8s.sh
+      #    ./scripts/deploy-k8s.sh
 
