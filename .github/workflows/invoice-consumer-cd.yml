@@ -33,7 +33,17 @@ jobs:
         run: |
           chmod +x ./scripts/cd-build.sh
           ./scripts/cd-build.sh
-      # ?? CD FASE 2: Conecta via SSH e apenas executa o script que já existe na VM
+      # ☁️ CD FASE 2: Transfere o arquivo de deploy para a VM via SCP
+      - name: Copy deployment script to OCI VM
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.ORACLE_CLOUD_IP }}
+          username: opc
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "scripts/deploy-docker.sh"        # Caminho do arquivo no repositório GitHub
+          target: "/home/opc/projetos/invoice-consumer/scripts" # Pasta de destino na sua VM
+          strip_components: 1                   # Evita que ele recrie a pasta 'scripts/' dentro do destino
+      # ?? CD FASE 3: Conecta via SSH e apenas executa o script que já existe na VM
       - name: Execute OCI VM Remote Deployment
         uses: appleboy/ssh-action@v1.0.3
         env:
