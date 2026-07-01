@@ -21,7 +21,6 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
       KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
       CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
-
   kafdrop:
     image: obsidiandynamics/kafdrop:4.0.1
     container_name: kafdrop
@@ -33,3 +32,6 @@ services:
       JVM_OPTS: "-Xms32M -Xmx64M"
     depends_on:
       - kafka
+networks:
+  default:
+    name: kafka-shared-network

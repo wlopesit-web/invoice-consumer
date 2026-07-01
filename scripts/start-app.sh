@@ -25,12 +25,13 @@ VAL_WLLT=$(oci secrets secret-bundle get --secret-id $OCID_WLLT --query 'data."s
 docker run -d \
   --name invoice-consumer-container \
   --restart always \
+  --network kafka-shared-network \
   -p 8082:8082 \
   -e SERVER_PORT=8082 \
   -v /home/opc/oracle_wallet:/app/oracle_wallet \
   -v /home/opc/.oci:/root/.oci:ro \
   -v /home/opc/.oci:/home/opc/.oci:ro \
-  -e SPRING_KAFKA_BOOTSTRAP_SERVERS=147.15.123.230:9092 \
+  -e SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka-portfolio:29092 \
   -e DB_USER="$VAL_USER" \
   -e DB_PASSWORD="$VAL_PASS" \
   -e WALLET_PASSWORD="$VAL_WLLT" \
